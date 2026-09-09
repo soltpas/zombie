@@ -12,9 +12,9 @@ let zt = [0];
 let st = 0;
 let r;
 let rr = false;
+let a = 0;
 
 function preload() {
-
 }
 
 function setup() {
@@ -35,7 +35,7 @@ function draw() {
             }
             noStroke();
             fill("red");
-            circle(bx[i],by[i],bs[i])
+            circle(bx[i] - a,by[i],bs[i])
             if (bs[i] <= 0){
                 bl[i] = false;
                 bz[i] = 0;
@@ -74,7 +74,7 @@ function draw() {
 function keyPressed() {
     if (key == "d" && rr == false){
         if (bc < 30){
-            bx[bc] = mouseX;
+            bx[bc] = mouseX + a;
             by[bc] = mouseY;
             bz[bc] = 0;
             bs[bc] = 100;
@@ -85,5 +85,15 @@ function keyPressed() {
     if (key == "f"){
         r = millis();
         rr = true;
+    }
+    if (key == "a"){
+        if (a >= -740){
+            a -= 10;
+        }
+    }
+    if (key == "s"){
+        if (a <= 740){
+            a += 10;
+        }
     }
 }
