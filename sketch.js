@@ -23,6 +23,9 @@ function setup() {
 
 function draw() {
     background(10,100,50,50)
+    textSize(50);
+    fill("red");
+    text("弾数:" + (30 - bc),10,50);
     for (let i = 0;i < bx.length;i++){
         if (bl[i] == true){
             bz[i] += 1;
