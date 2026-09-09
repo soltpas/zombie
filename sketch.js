@@ -8,8 +8,14 @@ let zx = [0];
 let zy = [0];
 let zz = [0];
 let zl = [false];
+let zt = [0];
+let st = 0;
 let r;
 let rr = false;
+
+function preload() {
+
+}
 
 function setup() {
     createCanvas(1500, 800);
@@ -32,6 +38,23 @@ function draw() {
                 bz[i] = 0;
             }
         }
+    }
+    for (let i = 0;i < zx.length;i++){
+        if (zl[i] == true){
+            if(millis() - zt[i] >= 1000){
+                zz[i] -= 1;
+                zy[i] += 1;
+                zt[i] = millis();
+            }
+        }
+    }
+    if (millis() - st > 1500){
+        st = millis() - int(random(100,1000,100));
+        zx.push(random(-750,2250));
+        zy.push(0);
+        zl.push(true);
+        zt.push(millis());
+        zz.push(0);
     }
     if (rr == true){
         if(millis() % 1000 <= 50){
