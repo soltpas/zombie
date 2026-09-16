@@ -4,17 +4,19 @@ let bz = [0];
 let bc = 0;
 let bs = [0];
 let bl = [false]
-let zx = [0];
-let zy = [0];
-let zz = [0];
-let zl = [false];
-let zt = [0];
+let ux = [0];
+let uy = [0];
+let uz = [0];
+let ul = [false];
+let ut = [0];
+let ui;
 let st = 0;
 let r;
 let rr = false;
 let a = 0;
 
 function preload() {
+    ui = loadImage("ufo.png");
 }
 
 function setup() {
@@ -42,22 +44,23 @@ function draw() {
             }
         }
     }
-    for (let i = 0;i < zx.length;i++){
-        if (zl[i] == true){
-            if(millis() - zt[i] >= 1000){
-                zz[i] -= 1;
-                zy[i] += 1;
-                zt[i] = millis();
+    for (let i = 0;i < ux.length;i++){
+        if (ul[i] == true){
+            if(millis() - ut[i] >= 1000){
+                uz[i] -= 1;
+                uy[i] += 1;
+                ut[i] = millis();
+                Image(ui,ux[i],uy[i],50-uz[i],50-uz[i]);
             }
         }
     }
     if (millis() - st > 1500){
         st = millis() - int(random(100,1000,100));
-        zx.push(random(-750,2250));
-        zy.push(0);
-        zl.push(true);
-        zt.push(millis());
-        zz.push(0);
+        ux.push(random(-750,2250));
+        uy.push(0);
+        ul.push(true);
+        ut.push(millis());
+        uz.push(0);
     }
     if (rr == true){
         if(millis() % 1000 <= 50){
